@@ -55,4 +55,4 @@ for items in range(0,2316,120):
         data.loc[i] = [url,title, price, city, state ]    
 
 print(data)
-data.to_csv('part_2.tsv',sep="\t", encoding='utf-8', index=False)
+data.to_csv('..\data\part_2.tsv',sep="\t", encoding='utf-8', index=False)

@@ -12,7 +12,7 @@ import csv
 import pandas, sys
 import pandas as pd
 
-with open("part_2.tsv",encoding="utf8") as fd:
+with open("..\data\part_2.tsv",encoding="utf8") as fd:
 
     rd = csv.reader(fd, delimiter="\t", quotechar='"')
     for row in rd:
@@ -22,9 +22,9 @@ with open("part_2.tsv",encoding="utf8") as fd:
 a = pd.read_csv("part_2.tsv",delimiter="\t",error_bad_lines=False)
 b = pd.read_csv("part_3.tsv",delimiter="\t",error_bad_lines=False)
 
-merged = a.append(b)
+merged = a.merge(b, on = "url")
 
-merged.to_csv('bonus.tsv', sep="\t", encoding='utf-8', index=False)
+merged.to_csv('..\data\bonus.tsv', sep="\t", encoding='utf-8', index=False)
     
 #bonus = pd.DataFrame(columns=['Posting time ','Number of images', 'Description under the image','Year',
 #                              'Make and Model ','Condition ', 'Cylinders ','Drive ','Fuel ','Odometer ',

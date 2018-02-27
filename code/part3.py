@@ -31,12 +31,13 @@ with open("part_2.tsv",encoding="utf8") as fd:
 
 def main(urls):
     urls.pop(0)
+    posting_time,num_of_images,desc_img,year, make_model,condition, cylinders ,drive ,fuel ,odometer,color,size,status,transmission,vin,url1=[None]*16
+
     for url in urls:
         try:
             print("Scrapping from "+ url)
             bs = getPageContent3(url)
             
-            posting_time,num_of_images,desc_img,year, make_model,condition, cylinders ,drive ,fuel ,odometer,color,size,status,transmission,vin,url1=[None]*15
             url1=url
             try:
                 posting_time = bs.find("time", { "class" : "date timeago" }).get_text().lstrip()
@@ -87,7 +88,7 @@ def main(urls):
             i = data3.shape[0]
             data3.loc[i] = [posting_time,num_of_images,desc_img,year, make_model,condition, cylinders ,drive ,fuel ,odometer,color,size,status,transmission,vin,url1]
     print("Scrapped all data")
-    data3.to_csv('part_3.tsv',sep="\t", encoding='utf-8', index=False)
+    data3.to_csv('..\data\part_3.tsv',sep="\t", encoding='utf-8', index=False)
     print("Successfully write in part_3.tsv file")
     
 main(urls)
